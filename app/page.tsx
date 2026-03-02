@@ -1,6 +1,8 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import FAQ from './components/FAQ'
+import StatsCard from './components/StatsCard'
+import GetInvolvedLinks from './components/GetInvolvedLinks'
 
 export default function Home() {
   return (
@@ -42,7 +44,7 @@ export default function Home() {
             </a>
             <a 
               href="#faq" 
-              className="text-white text-sm md:text-base font-normal tracking-wide hover:opacity-80 transition-opacity"
+              className="text-white text-sm md:text-base font-normal tracking-wide hover:opacity-80 transition-opacity drop-shadow-[0_6px_18px_rgba(0,0,0,0.35)]"
             >
               FAQ
             </a>
@@ -59,13 +61,13 @@ export default function Home() {
         {/* Hero Section */}
         <section className="relative w-full">
           {/* Background Image */}
-          <div className="relative w-full h-[calc(100vh-100px)] sm:h-[calc(100vh-120px)] md:h-[calc(100vh-140px)] min-h-[500px] sm:min-h-[600px] max-h-[922px] rounded-[20px] sm:rounded-[30px] md:rounded-[40px] overflow-hidden bg-black">
+          <div className="relative w-full h-[calc(100vh-80px)] sm:h-[calc(100vh-120px)] md:h-[calc(100vh-140px)] min-h-[350px] sm:min-h-[600px] max-h-[922px] rounded-[20px] sm:rounded-[30px] md:rounded-[40px] overflow-hidden bg-black">
             <Image
               src="/images/background.png"
               alt="Aurora Background"
               fill
               priority
-              className="object-contain"
+              className="object-cover md:object-contain"
               sizes="100vw"
               quality={100}
             />
@@ -79,7 +81,7 @@ export default function Home() {
               */}
               <div 
                 className="flex flex-col lg:flex-row items-center lg:items-center text-center lg:text-left"
-                style={{ gap: 'clamp(24px, 5vw, 96px)' }}
+                style={{ gap: 'clamp(16px, 5vw, 96px)' }}
               >
                 {/* Large Logo Card - scales with viewport */}
                 <div className="flex-shrink-0">
@@ -164,9 +166,9 @@ export default function Home() {
         <div 
           className="flex flex-col w-full overflow-visible"
           style={{ 
-            paddingTop: 'clamp(80px, 10.8vw, 208px)',
+            paddingTop: 'clamp(40px, 10.8vw, 208px)',
             paddingBottom: '0',
-            gap: 'clamp(120px, 16vw, 307px)'
+            gap: 'clamp(60px, 16vw, 307px)'
           }}
         >
           {/* For Industry Section */}
@@ -233,13 +235,15 @@ export default function Home() {
             </div>
             
             {/* Right Content - Discover AI Card */}
-            <Link 
-              href="/discover-ai"
-              className="flex-shrink-0 relative overflow-visible block transition-transform duration-300 hover:-translate-y-2"
+            <a 
+              href="https://discoverai-ae.vercel.app"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex-shrink-0 relative overflow-visible block transition-transform duration-300 hover:-translate-y-2 w-full lg:w-auto"
             >
-              {/* Glow effect - ultra soft diffuse glow matching Figma's 255px blur */}
+              {/* Glow effect - hidden on mobile to prevent overflow */}
               <div 
-                className="absolute pointer-events-none"
+                className="absolute pointer-events-none hidden lg:block"
                 style={{
                   left: '50%',
                   bottom: '-60%',
@@ -253,17 +257,17 @@ export default function Home() {
               {/* Card */}
               <div className="relative z-10">
                 <Image
-                  src="/images/discover-ai-card.png"
+                  src="/images/discoverai-card-new.png"
                   alt="Discover AI - Learn what we can do for you with our custom AI tool"
                   width={667}
                   height={317}
                   style={{ 
-                    width: 'clamp(300px, 34.7vw, 667px)',
+                    width: 'clamp(260px, 34.7vw, 667px)',
                     height: 'auto'
                   }}
                 />
               </div>
-            </Link>
+            </a>
           </section>
 
           {/* For Students Section */}
@@ -350,10 +354,10 @@ export default function Home() {
             </div>
             
             {/* Right Content - Stats Card */}
-            <div className="flex-shrink-0 relative overflow-visible">
-              {/* Glow effect - ultra soft diffuse glow matching Figma's 255px blur */}
+            <div className="flex-shrink-0 relative overflow-visible w-full lg:w-auto">
+              {/* Glow effect - hidden on mobile */}
               <div 
-                className="absolute pointer-events-none"
+                className="absolute pointer-events-none hidden lg:block"
                 style={{
                   left: '50%',
                   top: '50%',
@@ -366,16 +370,7 @@ export default function Home() {
               />
               {/* Card */}
               <div className="relative z-10">
-                <Image
-                  src="/images/for-students-counter-card.png"
-                  alt="65+ Members, 2+ Projects, 12+ Engineers"
-                  width={667}
-                  height={206}
-                  style={{ 
-                    width: 'clamp(300px, 34.7vw, 667px)',
-                    height: 'auto'
-                  }}
-                />
+                <StatsCard />
               </div>
             </div>
           </section>
@@ -385,10 +380,10 @@ export default function Home() {
             id="projects"
             className="w-full relative"
             style={{ 
-              minHeight: 'clamp(500px, 51.3vw, 985px)'
+              minHeight: 'clamp(280px, 35.91vw, 690px)'
             }}
           >
-            {/* Decorative Curve SVG - extends beyond viewport for wide screens */}
+            {/* Decorative Curve SVG */}
             <div 
               className="absolute pointer-events-none left-1/2"
               style={{
@@ -428,8 +423,8 @@ export default function Home() {
             <div 
               className="relative z-10 flex flex-col"
               style={{ 
-                paddingTop: 'clamp(80px, 8vw, 155px)',
-                gap: 'clamp(80px, 8.9vw, 171px)'
+                paddingTop: 'clamp(40px, 8vw, 155px)',
+                gap: 'clamp(32px, 8.9vw, 171px)'
               }}
             >
               {/* Header Row */}
@@ -459,27 +454,153 @@ export default function Home() {
                 </span>
               </div>
 
-              {/* Coming Soon Card */}
-              <div 
-                className="flex items-center justify-center"
+              {/* Project Card */}
+              <a
+                href="https://scientific-sock-142.notion.site/AI-customer-service-agent-RAG-2fbc943a2c4b80ce80aef1d4ec8eb77c"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group relative block overflow-hidden transition-transform duration-300 ease-out hover:scale-[1.02]"
                 style={{
-                  width: 'clamp(350px, 37.9vw, 727px)',
-                  height: 'clamp(200px, 20.4vw, 392px)',
-                  borderRadius: 'clamp(25px, 2.6vw, 50px)',
-                  border: '1.5px solid #494949'
+                  width: 'clamp(260px, 30.32vw, 582px)',
+                  aspectRatio: '727 / 496',
+                  borderRadius: 'clamp(20px, 2.08vw, 40px)',
+                  border: '1.8px solid #484848',
+                  background: '#0D0D0D',
                 }}
               >
-                <span 
-                  className="uppercase"
-                  style={{ 
-                    fontFamily: 'Inter, sans-serif',
-                    fontSize: 'clamp(16px, 1.25vw, 24px)',
-                    lineHeight: '1.21',
-                    color: '#3A3A3A'
+                <Image
+                  src="/images/rag-chatbot-thumbnail.png"
+                  alt="RAG Customer Service Agent"
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 768px) 280px, 30.32vw"
+                />
+                <div
+                  className="absolute inset-0 pointer-events-none"
+                  style={{
+                    background: 'linear-gradient(to top, rgba(0,0,0,0.6) 0%, transparent 50%)',
+                  }}
+                />
+                <div
+                  className="absolute flex flex-col"
+                  style={{
+                    right: "clamp(16px, 4.6vw, 34px)",
+                    maxWidth: "calc(100% - clamp(32px, 9.2vw, 68px))",
+                    left: 'clamp(16px, 4.64%, 34px)',
+                    bottom: 'clamp(11px, 3.36%, 24px)',
                   }}
                 >
-                  Coming Soon
-                </span>
+                  <span
+                    className="text-white font-normal"
+                    style={{
+                      fontFamily: 'Inter, sans-serif',
+                      fontSize: 'clamp(18px, 1.67vw, 32px)',
+                      lineHeight: '1.21',
+                      textShadow: '0px 4px 4px rgba(0, 0, 0, 0.25)',
+                    }}
+                  >
+                    RAG Customer Service Agent
+                  </span>
+                  <span
+                    className="text-white font-normal"
+                    style={{
+                      fontFamily: 'Inter, sans-serif',
+                      fontSize: 'clamp(14px, 1.25vw, 24px)',
+                      lineHeight: '1.8',
+                      textShadow: '0px 4px 4px rgba(0, 0, 0, 0.25)',
+                    }}
+                  >
+                    SGConsulting
+                  </span>
+                </div>
+              </a>
+            </div>
+          </section>
+
+          {/* Get Involved Section */}
+          <section
+            className="w-full"
+          >
+            {/* Mobile: stacked / Desktop: side-by-side with absolute image */}
+            <div className="relative flex flex-col lg:block" style={{ minHeight: 'clamp(0px, 52.03vw, 999px)' }}>
+              {/* Left Content */}
+              <div
+                className="relative lg:absolute flex flex-col"
+                style={{
+                  left: '0',
+                  top: '4.97%',
+                  zIndex: 2,
+                }}
+              >
+                {/* Title */}
+                <h2
+                  className="text-white font-normal"
+                  style={{
+                    fontFamily: 'var(--font-inter), Inter, sans-serif',
+                    fontSize: 'clamp(24px, 2.5vw, 48px)',
+                    lineHeight: '1.21',
+                  }}
+                >
+                  GET INVOLVED
+                </h2>
+
+                {/* Categories with modal popups */}
+                <GetInvolvedLinks />
+
+                {/* Apply Now Button */}
+                <a
+                  href="https://forms.gle/b9obbC32VLeFdbfX7"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center justify-center hover:bg-[#252525] transition-colors"
+                  style={{
+                    marginTop: 'clamp(22px, 2.3vw, 44px)',
+                    width: 'clamp(120px, 10.46vw, 201px)',
+                    height: 'clamp(40px, 3.42vw, 66px)',
+                    borderRadius: '69px',
+                    backgroundColor: '#181818',
+                    fontFamily: 'var(--font-inter), Inter, sans-serif',
+                    fontSize: 'clamp(14px, 1.25vw, 24px)',
+                    lineHeight: '1.21',
+                    color: '#FFFFFF',
+                  }}
+                >
+                  Apply Now
+                </a>
+              </div>
+
+              {/* Desktop Image — absolute within the relative container */}
+              <div
+                className="hidden lg:block absolute"
+                style={{
+                  left: '26.27%',
+                  top: '-0.71%',
+                  width: '70.77%',
+                  height: '92.57%',
+                  zIndex: 1,
+                }}
+              >
+                <Image
+                  src="/images/gi-new.png"
+                  alt="Applied Engineering team — collaborating, presenting, and showcasing at events"
+                  fill
+                  className="object-contain"
+                  style={{ objectPosition: 'right top' }}
+                  sizes="71vw"
+                  priority
+                />
+              </div>
+
+              {/* Mobile Image — in flow */}
+              <div className="lg:hidden relative w-full mt-8" style={{ aspectRatio: '1305 / 925' }}>
+                <Image
+                  src="/images/gi-new.png"
+                  alt="Applied Engineering team — collaborating, presenting, and showcasing at events"
+                  fill
+                  className="object-contain"
+                  style={{ objectPosition: 'center top' }}
+                  sizes="100vw"
+                />
               </div>
             </div>
           </section>
@@ -491,20 +612,20 @@ export default function Home() {
             style={{ 
               paddingTop: 'clamp(30px, 3vw, 60px)',
               paddingBottom: '0',
-              marginTop: 'clamp(-200px, -20vw, -400px)'
+              marginTop: '0px'
             }}
           >
             {/* Content Container */}
             <div 
               className="flex flex-col lg:flex-row items-start lg:items-center relative"
-              style={{ gap: 'clamp(60px, 17.3vw, 333px)' }}
+              style={{ gap: 'clamp(40px, 17.3vw, 333px)' }}
             >
               {/* Left Content */}
               <div 
-                className="flex flex-col flex-shrink-0"
+                className="flex flex-col flex-shrink-0 w-full lg:w-auto"
                 style={{ 
-                  width: 'clamp(320px, 36.9vw, 708px)',
-                  gap: 'clamp(48px, 4.8vw, 92px)'
+                  maxWidth: '708px',
+                  gap: 'clamp(32px, 4.8vw, 92px)'
                 }}
               >
                 {/* Title */}
@@ -726,8 +847,8 @@ export default function Home() {
 
               {/* Right Side - Buttons */}
               <div 
-                className="flex items-center"
-                style={{ gap: 'clamp(20px, 2.03vw, 39px)' }}
+                className="flex items-center flex-wrap"
+                style={{ gap: 'clamp(12px, 2.03vw, 39px)' }}
               >
                 <Link 
                   href="/contact"
@@ -775,10 +896,10 @@ export default function Home() {
               }}
             >
               <h2 
-                className="font-bold whitespace-nowrap"
+                className="font-bold whitespace-nowrap overflow-hidden"
                 style={{ 
                   fontFamily: 'Inter, sans-serif',
-                  fontSize: 'clamp(48px, 8.85vw, 170px)',
+                  fontSize: 'clamp(28px, 8.85vw, 170px)',
                   lineHeight: '1',
                   color: '#181818',
                   letterSpacing: '-0.02em'
