@@ -3,6 +3,7 @@ import Link from 'next/link'
 import FAQ from './components/FAQ'
 import StatsCard from './components/StatsCard'
 import GetInvolvedLinks from './components/GetInvolvedLinks'
+import ProjectCarousel from './components/ProjectCarousel'
 
 export default function Home() {
   return (
@@ -380,7 +381,7 @@ export default function Home() {
             id="projects"
             className="w-full relative"
             style={{ 
-              minHeight: 'clamp(280px, 35.91vw, 690px)'
+              minHeight: 'clamp(500px, 67vw, 1290px)'
             }}
           >
             {/* Decorative Curve SVG */}
@@ -454,66 +455,8 @@ export default function Home() {
                 </span>
               </div>
 
-              {/* Project Card */}
-              <a
-                href="https://scientific-sock-142.notion.site/AI-customer-service-agent-RAG-2fbc943a2c4b80ce80aef1d4ec8eb77c"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group relative block overflow-hidden transition-transform duration-300 ease-out hover:scale-[1.02]"
-                style={{
-                  width: 'clamp(260px, 30.32vw, 582px)',
-                  aspectRatio: '727 / 496',
-                  borderRadius: 'clamp(20px, 2.08vw, 40px)',
-                  border: '1.8px solid #484848',
-                  background: '#0D0D0D',
-                }}
-              >
-                <Image
-                  src="/images/rag-chatbot-thumbnail.png"
-                  alt="RAG Customer Service Agent"
-                  fill
-                  className="object-cover"
-                  sizes="(max-width: 768px) 280px, 30.32vw"
-                />
-                <div
-                  className="absolute inset-0 pointer-events-none"
-                  style={{
-                    background: 'linear-gradient(to top, rgba(0,0,0,0.6) 0%, transparent 50%)',
-                  }}
-                />
-                <div
-                  className="absolute flex flex-col"
-                  style={{
-                    right: "clamp(16px, 4.6vw, 34px)",
-                    maxWidth: "calc(100% - clamp(32px, 9.2vw, 68px))",
-                    left: 'clamp(16px, 4.64%, 34px)',
-                    bottom: 'clamp(11px, 3.36%, 24px)',
-                  }}
-                >
-                  <span
-                    className="text-white font-normal"
-                    style={{
-                      fontFamily: 'Inter, sans-serif',
-                      fontSize: 'clamp(18px, 1.67vw, 32px)',
-                      lineHeight: '1.21',
-                      textShadow: '0px 4px 4px rgba(0, 0, 0, 0.25)',
-                    }}
-                  >
-                    RAG Customer Service Agent
-                  </span>
-                  <span
-                    className="text-white font-normal"
-                    style={{
-                      fontFamily: 'Inter, sans-serif',
-                      fontSize: 'clamp(14px, 1.25vw, 24px)',
-                      lineHeight: '1.8',
-                      textShadow: '0px 4px 4px rgba(0, 0, 0, 0.25)',
-                    }}
-                  >
-                    SGConsulting
-                  </span>
-                </div>
-              </a>
+              {/* Project Carousel */}
+              <ProjectCarousel />
             </div>
           </section>
 
