@@ -9,7 +9,7 @@ const config: Config = {
   theme: {
     extend: {
       fontFamily: {
-        inter: ['Inter', 'sans-serif'],
+        inter: ['var(--font-inter)', 'sans-serif'],
         akzidenz: ['AkzidenzGrotesk', 'Arial Black', 'sans-serif'],
       },
       colors: {

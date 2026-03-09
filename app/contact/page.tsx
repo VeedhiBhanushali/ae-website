@@ -1,5 +1,6 @@
 import Image from 'next/image'
 import Link from 'next/link'
+import ContactContent, { ContactHeader } from './ContactContent'
 
 export default function Contact() {
   return (
@@ -7,7 +8,7 @@ export default function Contact() {
       {/* Container */}
       <div className="flex flex-col gap-6 sm:gap-8 md:gap-[43px] max-w-[1844px] mx-auto h-[calc(100vh-78px)]">
         {/* Header Navigation */}
-        <header className="flex items-center justify-between w-full">
+        <ContactHeader>
           {/* Logo */}
           <Link href="/" className="flex-shrink-0">
             <Image
@@ -57,7 +58,7 @@ export default function Contact() {
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
             </svg>
           </button>
-        </header>
+        </ContactHeader>
 
         {/* Main Content Area */}
         <div 
@@ -76,7 +77,7 @@ export default function Contact() {
           />
 
           {/* Content Overlay */}
-          <div className="absolute inset-0 flex flex-col p-6 sm:p-10 md:p-[40px] lg:p-[50px]">
+          <ContactContent>
             {/* Top Row - Title and Logo */}
             <div className="flex items-start justify-between w-full">
               {/* Title */}
@@ -246,7 +247,7 @@ export default function Contact() {
                 </svg>
               </a>
             </div>
-          </div>
+          </ContactContent>
         </div>
       </div>
     </main>

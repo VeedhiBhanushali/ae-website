@@ -1,6 +1,7 @@
 'use client'
 
 import { useState } from 'react'
+import { motion } from 'framer-motion'
 import TeamModal from './TeamModal'
 
 const categories = ['Software', 'Management', 'Creative'] as const
@@ -17,8 +18,8 @@ export default function GetInvolvedLinks() {
           marginTop: 'clamp(40px, 4.19vw, 80px)',
         }}
       >
-        {categories.map((category) => (
-          <button
+        {categories.map((category, i) => (
+          <motion.button
             key={category}
             onClick={() => setActiveTeam(category)}
             className="flex items-center group"
@@ -30,6 +31,9 @@ export default function GetInvolvedLinks() {
               padding: 0,
               textAlign: 'left',
             }}
+            whileHover={{ x: 4 }}
+            whileTap={{ scale: 0.98 }}
+            transition={{ duration: 0.2 }}
           >
             <span
               className="text-white font-normal transition-opacity duration-200 group-hover:opacity-70"
@@ -57,7 +61,7 @@ export default function GetInvolvedLinks() {
                 strokeWidth="1.5"
               />
             </svg>
-          </button>
+          </motion.button>
         ))}
       </div>
 

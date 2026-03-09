@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useLayoutEffect, useRef, useCallback } from 'react'
 import Image from 'next/image'
+import { motion } from 'framer-motion'
 
 // ─── Constants ───────────────────────────────────────────────────────────────
 const N = 3
@@ -144,6 +145,33 @@ function SlideOverlay({
         </div>
       )}
     </>
+  )
+}
+
+// ─── Carousel arrow button with hover/tap micro-interaction ────────────────────
+function MotionCarouselButton({
+  dir,
+  d,
+  onAdvance,
+}: {
+  dir: number
+  d: string
+  onAdvance: () => void
+}) {
+  return (
+    <motion.button
+      onClick={onAdvance}
+      aria-label={dir === -1 ? 'Previous project' : 'Next project'}
+      className="p-2"
+      style={{ background: 'none', border: 'none', cursor: 'pointer' }}
+      whileHover={{ scale: 1.15, opacity: 1 }}
+      whileTap={{ scale: 0.92 }}
+      transition={{ duration: 0.2 }}
+    >
+      <svg viewBox="0 0 9 19" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ width: 'clamp(6px, 0.45vw, 9px)', height: 'auto' }}>
+        <path d={d} stroke="#9C9C9C" strokeWidth="2" />
+      </svg>
+    </motion.button>
   )
 }
 
@@ -381,17 +409,7 @@ export default function ProjectCarousel() {
         style={{ marginTop: 'clamp(24px, 3.85vw, 74px)', gap: 'clamp(30px, 3.6vw, 69px)' }}
       >
         {[{ dir: -1 as const, d: 'M8 1L1 9.5L8 18' }, { dir: 1 as const, d: 'M1 1L8 9.5L1 18' }].map(({ dir, d }) => (
-          <button
-            key={dir}
-            onClick={() => advance(dir)}
-            aria-label={dir === -1 ? 'Previous project' : 'Next project'}
-            className="p-2 hover:opacity-70 transition-opacity"
-            style={{ background: 'none', border: 'none', cursor: 'pointer' }}
-          >
-            <svg viewBox="0 0 9 19" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ width: 'clamp(6px, 0.45vw, 9px)', height: 'auto' }}>
-              <path d={d} stroke="#9C9C9C" strokeWidth="2" />
-            </svg>
-          </button>
+          <MotionCarouselButton key={dir} dir={dir} d={d} onAdvance={() => advance(dir)} />
         ))}
       </div>
     </div>
