@@ -10,6 +10,9 @@ const inter = Inter({
 export const metadata: Metadata = {
   title: 'Applied Engineering | Student Run Software Agency at SJSU',
   description: 'A student run software agency at San Jose State University',
+  icons: {
+    icon: '/images/favicon.png',
+  },
 }
 
 export default function RootLayout({
@@ -19,7 +22,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`${inter.variable} font-inter antialiased`}>
+      <body className={`${inter.variable} ${inter.className} antialiased`}>
         {children}
       </body>
     </html>

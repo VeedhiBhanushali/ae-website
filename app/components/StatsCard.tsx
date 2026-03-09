@@ -1,6 +1,7 @@
 'use client'
 
 import { useState, useEffect, useRef, useCallback } from 'react'
+import { motion } from 'framer-motion'
 
 interface StatItem {
   value: number
@@ -71,8 +72,11 @@ export default function StatsCard() {
   const fontFamily = 'var(--font-inter), Inter, sans-serif'
 
   return (
-    <div
+    <motion.div
       ref={cardRef}
+      initial={{ opacity: 0, y: 20 }}
+      animate={isVisible ? { opacity: 1, y: 0 } : {}}
+      transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
       style={{
         width: 'clamp(280px, 34.64vw, 665px)',
         height: 'clamp(80px, 10.36vw, 199px)',
@@ -145,6 +149,6 @@ export default function StatsCard() {
           </div>
         </div>
       ))}
-    </div>
+    </motion.div>
   )
 }

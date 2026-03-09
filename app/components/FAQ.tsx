@@ -1,6 +1,7 @@
 'use client'
 
 import { useState } from 'react'
+import { motion, AnimatePresence } from 'framer-motion'
 
 export default function FAQ() {
   const [openIndex, setOpenIndex] = useState<number | null>(null)
@@ -29,15 +30,17 @@ export default function FAQ() {
       {faqs.map((faq, index) => (
         <div key={index}>
           {/* FAQ Question Button */}
-          <button
+          <motion.button
             onClick={() => toggleFAQ(index)}
-            className="flex items-center justify-between w-full cursor-pointer hover:bg-[#1f1f1f] transition-colors"
+            className="flex items-center justify-between w-full cursor-pointer"
             style={{
               backgroundColor: '#171717',
               borderRadius: 'clamp(12px, 1.3vw, 25px)',
               padding: 'clamp(17px, 1.77vw, 34px) clamp(17px, 1.72vw, 33px)',
               minHeight: 'clamp(40px, 4.17vw, 80px)'
             }}
+            whileHover={{ backgroundColor: 'rgba(31, 31, 31, 1)' }}
+            whileTap={{ scale: 0.995 }}
           >
             <span 
               style={{ 
@@ -49,46 +52,56 @@ export default function FAQ() {
             >
               {faq.question}
             </span>
-            <svg 
+            <motion.svg 
               width="15" 
               height="10" 
               viewBox="0 0 15 10" 
               fill="none" 
               xmlns="http://www.w3.org/2000/svg"
-              className="transition-transform duration-300"
               style={{ 
                 width: 'clamp(10px, 0.76vw, 15px)',
                 height: 'clamp(7px, 0.49vw, 10px)',
-                transform: openIndex === index ? 'rotate(180deg)' : 'rotate(0deg)'
+                flexShrink: 0,
               }}
+              animate={{ rotate: openIndex === index ? 180 : 0 }}
+              transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
             >
               <path d="M7.5 10L0 0H15L7.5 10Z" fill="#797979"/>
-            </svg>
-          </button>
+            </motion.svg>
+          </motion.button>
 
-          {/* FAQ Answer Content */}
-          {openIndex === index && (
-            <div 
-              className="overflow-hidden transition-all duration-300"
-              style={{
-                paddingTop: 'clamp(12px, 1.25vw, 24px)',
-                paddingLeft: 'clamp(17px, 1.77vw, 34px)',
-                paddingRight: 'clamp(17px, 1.72vw, 33px)',
-                paddingBottom: 'clamp(17px, 1.77vw, 34px)'
-              }}
-            >
-              <div
-                style={{ 
-                  fontFamily: 'Inter, sans-serif',
-                  fontSize: 'clamp(14px, 1.04vw, 20px)',
-                  lineHeight: '1.5',
-                  color: '#C5C5C5'
-                }}
+          {/* FAQ Answer Content — animated height + opacity */}
+          <AnimatePresence initial={false}>
+            {openIndex === index && (
+              <motion.div
+                initial={{ height: 0, opacity: 0 }}
+                animate={{ height: 'auto', opacity: 1 }}
+                exit={{ height: 0, opacity: 0 }}
+                transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
+                className="overflow-hidden"
               >
-                {faq.answer}
-              </div>
-            </div>
-          )}
+                <div 
+                  style={{
+                    paddingTop: 'clamp(12px, 1.25vw, 24px)',
+                    paddingLeft: 'clamp(17px, 1.77vw, 34px)',
+                    paddingRight: 'clamp(17px, 1.72vw, 33px)',
+                    paddingBottom: 'clamp(17px, 1.77vw, 34px)'
+                  }}
+                >
+                  <div
+                    style={{ 
+                      fontFamily: 'Inter, sans-serif',
+                      fontSize: 'clamp(14px, 1.04vw, 20px)',
+                      lineHeight: '1.5',
+                      color: '#C5C5C5'
+                    }}
+                  >
+                    {faq.answer}
+                  </div>
+                </div>
+              </motion.div>
+            )}
+          </AnimatePresence>
         </div>
       ))}
     </>
